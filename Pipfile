@@ -1,0 +1,59 @@
+[requires]
+python_version = "3.8"
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+##############
+# Project dependencies
+##############
+# ADD YOUR PACKAGES HERE
+
+# NOTE: this pinning is intentional, see https://app.clickup.com/t/3a7knv8
+pandas = "==1.5.1"
+numpy = "==1.20.3"
+"scikit-learn" = "==1.1.2"
+lightgbm = "==3.3.2"
+# pickle = "==4.0"
+
+#
+# Prefect - workflow orchestration
+#
+prefect = "*"
+
+prefect-aws = "*"
+prefect-dask = "*"
+prefect-slack = "*"
+
+#
+# Dask and deps
+#
+bokeh = ">=2.1.1,<3" # we put this in pacakges and not dev, because it is required for dockers downstream
+
+#
+# Progress logging
+#
+tqdm = "*"
+
+#
+# cloud
+#
+#boto3 = ">=1.18.31,<1.19.0"
+boto3 = "*"
+
+#
+# Validation of inputs and env vars
+#
+pydantic = "*"
+
+[dev-packages]
+##############
+# Project dev dependencies
+##############
+# ADD YOUR DEV PACKAGES HERE
+
+
+

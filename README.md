@@ -20,8 +20,10 @@ docker run -it --rm prefect-vs-dask:latest
 
 ## `docker-compose`: using dask - a scheduler and worker/s orchestration
 
+We can also build the docker using docker-compose:
+
 ```bash
-docker compose up
+docker-compose up --build --remove-orphans --scale dask-worker=3
 ```
 
 Finally, we have to run `orchestrator.py` to use that cluster. We have to feed it with the scheduler address.

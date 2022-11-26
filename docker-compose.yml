@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  dask-scheduler:
+    build: .
+    # we assume image was prebuilt
+    #    image: "prefect-vs-pure-dask:latest"
+
+    ports:
+      - "8787:8787"
+      - "8786:8786"
+    entrypoint:
+      - dask
+      - scheduler
+      - --idle-timeout=30m
+
+  dask-worker:
+    build: .
+    # we assume image was prebuilt
+    #    image: "prefect-vs-pure-dask:latest"
+
+    entrypoint:
+      - dask
+      - worker
+      - tcp://dask-scheduler:8786
+      - --nworkers=1
+      - --nthreads=1
+      - --memory-limit=0 # 0 means unlimited
+
+    depends_on:
+      - dask-scheduler
+
